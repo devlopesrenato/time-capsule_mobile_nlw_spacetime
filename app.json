@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "time-capsule_mobile_nlw_spacetime",
-    "slug": "time-capsule_mobile_nlw_spacetime",
+    "name": "mobile",
+    "slug": "mobile",
+    "scheme": "nlwspacetime",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
