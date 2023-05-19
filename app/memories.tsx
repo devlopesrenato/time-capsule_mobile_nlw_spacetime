@@ -1,37 +1,36 @@
-import { StatusBar } from 'expo-status-bar'
-import { styled } from 'nativewind'
-import { ImageBackground, Text, TouchableOpacity, View } from 'react-native'
+import Icon from '@expo/vector-icons/Feather'
+import { Link } from 'expo-router'
+import React from 'react'
+import { ScrollView, TouchableOpacity, View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-import blurBg from '../src/assets/bg-blur.png'
 import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
-import Stripes from '../src/assets/stripes.svg'
-
-const StyledStripes = styled(Stripes)
 
 export default function Memories() {
+  const { bottom, top } = useSafeAreaInsets()
   return (
-    <ImageBackground
-      source={blurBg}
-      className="relative flex-1 items-center bg-gray-900 px-8 py-10"
-      imageStyle={{ position: 'absolute', left: '-100%' }}
+    <ScrollView
+      className="flex-1 px-8"
+      contentContainerStyle={{ paddingBottom: bottom, paddingTop: top }}
     >
-      <StyledStripes className="absolute left-2" />
-      <View className="flex-row w-screen p-5 items-center justify-between ">
+      <View className="mt-4 flex-row items-center justify-between">
         <NLWLogo />
-        <TouchableOpacity
-          activeOpacity={0.7}
-          className="rounded-full bg-green-700 px-4 py-3"
-          onPress={() => console.log('add')}
-        >
-          <Text className="font-alt text-sm uppercase text-black">
-            +
-          </Text>
-        </TouchableOpacity>
+
+        <Link href="/new" asChild>
+          <TouchableOpacity className="h-10 w-10 items-center justify-center rounded-full bg-green-500">
+            <Icon name="plus" size={16} color="#fff" />
+          </TouchableOpacity>
+        </Link>
       </View>
 
+      <View className="mt-4 flex-row items-center justify-between">
+        <Link href="/index" asChild>
+          <TouchableOpacity className="h-10 w-10 items-center justify-center rounded-full bg-red-500">
+            <Icon name="log-out" size={16} color="#fff" />
+          </TouchableOpacity>
+        </Link>
+      </View>
 
-
-      <StatusBar style="light" translucent />
-    </ImageBackground>
+    </ScrollView>
   )
 }
